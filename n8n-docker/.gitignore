@@ -1,0 +1,8 @@
+# Ignore n8n persistent data
+n8n-data/
+
+# Ignore Docker environment files containing secrets
+.env
+
+# Ignore Docker logs (optional)
+*.log
