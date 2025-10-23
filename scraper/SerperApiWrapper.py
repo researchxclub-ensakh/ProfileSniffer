@@ -121,6 +121,7 @@ class SerperAPIWrapper:
 if __name__ == "__main__":
     load_dotenv()
 
+    SERPER_MAX_SEARCH_PAGES = os.getenv("SERPER_MAX_SEARCH_PAGES")
     tokens_json = os.getenv("SERPER_TOKENS", "{}")
     serper_tokens = json.loads(tokens_json)
 
@@ -149,7 +150,7 @@ if __name__ == "__main__":
     all_data = []
     for query in search_queries:
         print(f"\n🔍 Searching for: '{query}'")
-        results = search_engine.fetch_all_results(query, search_location, max_pages=100)
+        results = search_engine.fetch_all_results(query, search_location, max_pages=SERPER_MAX_SEARCH_PAGES)
         all_data.extend(results)
 
     search_engine.save_results(all_data, "serper_search_results.json")
